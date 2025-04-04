@@ -17,6 +17,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/* Aloca um vetor de tamanho @tam */
 int *alocaVetor(int tam) {
     if (tam <= 0)
         return NULL;

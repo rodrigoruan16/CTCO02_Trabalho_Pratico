@@ -21,8 +21,11 @@ void insertionsort(int *vet, int tam);
 /*Implementação do SelectionSort*/
 void selectionsort(int *vet, int tam);
 
+/* Implementação do merge (auxiliar para mergesort) */
+void merge(int *vet, int low, int mid, int high);
+
 /*Implementação do MergeSort*/
-void mergesort(int *vet, int tam);
+void mergesort(int *vet, int low, int high);
 
 /*Implementação do QuickSort*/
 void quicksort(int *vet, int tam);

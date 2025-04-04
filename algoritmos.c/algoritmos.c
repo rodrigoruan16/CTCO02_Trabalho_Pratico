@@ -16,6 +16,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "utils/utils.h"
 
 /*Implementação do InsertionSort*/
 void insertionsort(int *vet, int tam) {
@@ -53,8 +54,54 @@ void selectionsort(int *vet, int tam) {
     }
 }
 
+/* Implementação do merge (auxiliar para mergesort) */
+void merge(int *vet, int low, int mid, int high) {
+    int *temp = alocaVetor(high - low + 1);
+    if (!temp)
+        return NULL;
+
+    int left = low, right = mid + 1, idx = 0;
+
+    while (left <= mid && right <= high) {
+        if (vet[left] <= vet[right]) {
+            temp[idx] = vet[left];
+            left++;
+        } else {
+            temp[idx] = vet[right];
+            right++;
+        }
+
+        idx++;
+    }
+
+    while (left <= mid) {
+        temp[idx] = vet[left];
+        left++;
+        idx++;
+    }
+
+    while (right <= high) {
+        temp[idx] = vet[right];
+        right++;
+        idx++;
+    }
+
+    for (int i = low; i <= high; i++) {
+        vet[i] = vet[i - low];
+    }
+}
+
 /*Implementação do MergeSort*/
-void mergesort(int *vet, int tam);
+void mergesort(int *vet, int low, int high) {
+    if (low >= high)
+        return;
+
+    int mid = (low + high) / 2;
+
+    mergesort(vet, low, mid);
+    mergesort(vet, mid + 1, high);
+    merge(vet, low, mid, high);
+}
 
 /*Implementação do QuickSort*/
 void quicksort(int *vet, int tam);
