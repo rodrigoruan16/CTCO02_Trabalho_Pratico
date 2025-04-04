@@ -14,14 +14,44 @@
  * Data: 04/04/2025
  ******************************************************************************/
 
-/*Implementação do QuickSort*/
-void mergesort(int *vet, int tam);
+/*Implementação do InsertionSort*/
+void insertionsort(int *vet, int tam) {
+    if (!vet || tam == 0)
+        return;
+
+    for (int i = 1; i < tam; i++) {
+        int marcador = i - 1, elemento = vet[i];
+
+        while (marcador >= 0 && vet[marcador] > elemento) {
+            vet[marcador + 1] = vet[marcador];
+            marcador--;
+        }
+
+        vet[marcador + 1] = elemento;
+    }
+}
 
 /*Implementação do SelectionSort*/
+void selectionsort(int *vet, int tam) {
+    if (!vet || tam == 0)
+        return;
+
+    for (int i = 0; i < tam - 1; i++) {
+        int menor = i;
+
+        for (int j = i + 1; j < tam; j++) {
+            if (vet[j] < vet[menor])
+                menor = j;
+        }
+
+        int temp = vet[i];
+        vet[i] = vet[menor];
+        vet[menor] = temp;
+    }
+}
+
+/*Implementação do MergeSort*/
+void mergesort(int *vet, int tam);
+
+/*Implementação do QuickSort*/
 void quicksort(int *vet, int tam);
-
-/*Implementação do InsertionSort*/
-void selectionsort(int *vet, int tam);
-
-/*Implementação do ALGORITMO NOVO*/
-void inserctionsort(int *vet, int tam);
