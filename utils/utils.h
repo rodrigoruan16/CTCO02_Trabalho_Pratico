@@ -59,4 +59,21 @@ void escreveArquivo(char *nomeArquivo, char *nomeAlgo, int exec_time, int inputS
   res[0] recebe 1 se encontrou o elemento buscado e 0 caso contrário
   res[1] informa quantas vezes a função buscaBinaria foi chamada, uma vez que ela é recursiva
   ou seja, sempre que a função é chamada res[1] é incrementado*/
-void buscaBinaria(int *vet, int inicio, int fim, int valor, int *res);  
+void buscaBinaria(int *vet, int inicio, int fim, int valor, int *res) {
+    res[1]++;
+    if (!vet || inicio > fim)
+        return;
+
+    int meio = (inicio + fim) / 2;
+
+    if (vet[meio] == valor) {
+        res[0] = 1;
+        return;
+    }
+    
+    if (vet[meio] < valor) {
+        buscaBinaria(vet, meio + 1, fim, valor, res);
+    } else {
+        buscaBinaria(vet, inicio, meio - 1, valor, res);
+    }
+}
