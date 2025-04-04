@@ -1,3 +1,20 @@
+/******************************************************************************
+ * Arquivo: utils.h
+ * 
+ * Descrição: Biblioteca utilitária para geração de dados e operações de apoio
+ *            ao sistema de benchmarking de algoritmos de ordenação. Contém
+ *            funções para criação de conjuntos de dados e auxiliares de arquivo.
+ * 
+ * Criadores: 
+ *            - CAIO MENDES COUTINHO E GARCIA - 2024007305
+ *            - DIEGO SILVA CORTEZ - 2024002480
+ *            - LUCAS ALEXANDRE DOS SANTOS BAESSO - 2024007172
+ *            - RAFAEL FERNANDO AURELIO RIBEIRO - 2024009426
+ *            - RODRIGO RUAN SOUZA VIANA - 2024004644
+ * 
+ * Data: 04/04/2025
+ ******************************************************************************/
+
 /*O sistema deve gerar conjuntos de dados ordenados de forma crescente e
 decrescente. Para tanto, deve haver uma função com a assinatura abaixo, onde
 tam é a quantidade de elementos e ordem define o tipo de ordenação: 0 para
