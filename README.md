@@ -10,7 +10,7 @@ Comparar a eficiência dos seguintes algoritmos de ordenação:
 - **Seleção** (`selectionSort`)
 - **MergeSort** (`mergeSort`)
 - **QuickSort Tradicional** (`quickSort`)
-- **Algoritmo Novo**: **HeapSort** (`heapSort`)
+- **Algoritmo Novo**: **???** (`???`)
 
 **Métricas avaliadas**:
 - Tempo de execução (ms).
