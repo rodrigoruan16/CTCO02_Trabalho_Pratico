@@ -1,5 +1,5 @@
 /******************************************************************************
- * Arquivo: algoritmos.h
+ * Arquivo: algoritmos.c
  * 
  * Descrição: Implementação dos algoritmo de ordenação.
  *            Este arquivo contém a funções de sort.
@@ -13,6 +13,9 @@
  * 
  * Data: 04/04/2025
  ******************************************************************************/
+
+#include <stdio.h>
+#include <stdlib.h>
 
 /*Implementação do InsertionSort*/
 void insertionsort(int *vet, int tam) {
