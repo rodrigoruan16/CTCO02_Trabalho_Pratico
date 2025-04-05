@@ -27,5 +27,8 @@ void merge(int *vet, int low, int mid, int high);
 /*Implementação do MergeSort*/
 void mergesort(int *vet, int low, int high);
 
+/*Wrap do MergeSort que converte os args padrão para o adaptado*/
+void wrapMergeSort(int *vet, int tam);
+
 /*Implementação do QuickSort*/
 void quicksort(int *vet, int tam);
