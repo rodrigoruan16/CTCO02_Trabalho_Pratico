@@ -31,6 +31,7 @@ Comparar a eficiência dos seguintes algoritmos de ordenação:
 
 3. **Saída**:
    - Tabelas comparativas (exemplo abaixo) e gráficos para cada métrica.
+   - Os dados gerados pela aplicação serão utilizados posteriormente para a produção de um dashboard para visualização de eficiência
 
 | Tamanho | Aleatório (ms) | Crescente (ms) | Decrescente (ms) | Quase Ordenado (ms) |
 |---------|----------------|----------------|------------------|---------------------|
