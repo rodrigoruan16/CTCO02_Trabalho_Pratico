@@ -1,6 +1,6 @@
 #include "testeUtils.h"
 
-int runTimedSort(void (*sorting_algorithm)(int *vet, int tam), int *vet, int tam) {
+double runTimedSort(void (*sorting_algorithm)(int *vet, int tam), int *vet, int tam) {
 
     struct timeval startTime, end;
 
@@ -12,5 +12,5 @@ int runTimedSort(void (*sorting_algorithm)(int *vet, int tam), int *vet, int tam
     long seconds = end.tv_sec - startTime.tv_sec;
     long microseconds = end.tv_usec - startTime.tv_usec;
     double result = seconds + microseconds*1e-6;
-    return result * 1000; // ms
+    return result * 1000.0; // ms
 }
