@@ -30,6 +30,16 @@ int *alocaVetor(int tam) {
     return vetor;
 }
 
+void printaVetor(int *vet, int tam) {
+    if (!vet || tam <= 0)
+        return;
+
+    for (int i = 0; i < tam; i++)
+        printf("%d ", vet[i]);
+
+    printf("\n");
+}
+
 /*O sistema deve gerar conjuntos de dados ordenados de forma crescente e
 decrescente. Para tanto, deve haver uma função com a assinatura abaixo, onde
 tam é a quantidade de elementos e ordem define o tipo de ordenação: 0 para
@@ -117,4 +127,19 @@ void buscaBinaria(int *vet, int inicio, int fim, int valor, int *res) {
     } else {
         buscaBinaria(vet, inicio, meio - 1, valor, res);
     }
+}
+
+/* Compare auxiliar para in-built quicksort (increasing) */
+int compare(const void* a, const void* b) {
+    return (*(int*)a - *(int*)b);
+}
+
+/* Verifica se ambos vetores são iguais (mesmos elementos nas mesmas posições) */
+int areEqual(int *a, int *b, int qtyElementos) {
+    for (int i = 0; i < qtyElementos; i++) {
+        if (a[i] != b[i])
+            return 0;
+    }
+
+    return 1;
 }

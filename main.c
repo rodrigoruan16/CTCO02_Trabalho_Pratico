@@ -7,11 +7,13 @@ int main() {
 
     int contador = 0;
 
-    wrapMergeSort(vet, sizeof(vet)/sizeof(int));
+    insertionsort(vet, sizeof(vet)/sizeof(int));
 
     for (int i = 0; i < sizeof(vet)/sizeof(int); i++) {
         printf("%d ", vet[i]);
     }
+
+    printf("\n");
 
     return 0;
 }

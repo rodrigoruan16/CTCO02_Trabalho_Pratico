@@ -39,6 +39,8 @@ permite que esse conjunto de dados seja reproduzido posteriormente. A função
 retorna o vetor previamente preenchido.*/
 int* geraAleatorios(int tam, int semente);
 
+void printaVetor(int *vet, int tam);
+
 /*Cria vetor a ser ordenado lendo o arquivo
   Será responsável por criar o vetor que será
   utilizado em todas as demais funções
@@ -63,3 +65,9 @@ void escreveArquivo(char *nomeArquivo, char *nomeAlgo, int exec_time, int inputS
   res[1] informa quantas vezes a função buscaBinaria foi chamada, uma vez que ela é recursiva
   ou seja, sempre que a função é chamada res[1] é incrementado*/
 void buscaBinaria(int *vet, int inicio, int fim, int valor, int *res);
+
+/* Compare auxiliar para in-built quicksort (increasing) */
+int compare(const void* a, const void* b);
+
+/* Verifica se ambos vetores são iguais (mesmos elementos nas mesmas posições) */
+int areEqual(int *a, int *b, int qtyElementos);
