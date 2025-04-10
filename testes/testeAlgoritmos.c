@@ -45,6 +45,7 @@ function functions[] = {
 
 // ---------------------------------- //
 
+// MODIFICAR PARA TESTAR COM QUASE ORDENADOS, ORDENADOS E ALEATORIOS
 void testSort(const void f(int *, int), char funcName[]) {
     srand(time(NULL));
 
@@ -73,7 +74,7 @@ void testSort(const void f(int *, int), char funcName[]) {
         total++;
     }
 
-    printf("-- %s --\n", funcName);
+    printf("-- TESTE UNITÁRIOS: %s --\n", funcName);
     printf("Total de testes: %d\n", total);
     printf("Total de testes: %d\n", total);
     printf("Total de ordenacoes corretas: %d\n", acertos);
