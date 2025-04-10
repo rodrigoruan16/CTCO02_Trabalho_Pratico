@@ -6,11 +6,11 @@ Este repositório contém um sistema de _benchmarking_ desenvolvido em C para co
 
 ## 📌 Objetivo
 Comparar a eficiência dos seguintes algoritmos de ordenação:
-- **Inserção** (`insertionSort`)
-- **Seleção** (`selectionSort`)
-- **MergeSort** (`mergeSort`)
-- **QuickSort Tradicional** (`quickSort`)
-- **Algoritmo Novo**: **???** (`???`)
+- **Inserção** (`insertionsort`)
+- **Seleção** (`selectionsort`)
+- **MergeSort** (`mergesort`)
+- **QuickSort Tradicional** (`quicksort`)
+- **Algoritmo Novo**: **ShellSort** (`shellsort`)
 
 **Métricas avaliadas**:
 - Tempo de execução (ms).
