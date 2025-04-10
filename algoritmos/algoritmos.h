@@ -31,4 +31,7 @@ void mergesort(int *vet, int low, int high);
 void wrapMergeSort(int *vet, int tam);
 
 /*Implementação do QuickSort*/
-void quicksort(int *vet, int tam);
+void quicksort(int *vet, int inicio, int fim, int *contador);
+
+/* Implementação do particiona (auxiliar para quicksort) */
+int particiona(int *vet, int inicio, int fim);

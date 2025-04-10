@@ -16,7 +16,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "utils/utils.h"
+#include "../utils/utils.h"
 
 /*Implementação do InsertionSort*/
 void insertionsort(int *vet, int tam) {
@@ -58,7 +58,7 @@ void selectionsort(int *vet, int tam) {
 void merge(int *vet, int low, int mid, int high) {
     int *temp = alocaVetor(high - low + 1);
     if (!temp)
-        return NULL;
+        return;
 
     int left = low, right = mid + 1, idx = 0;
 
@@ -108,16 +108,6 @@ void wrapMergeSort(int *vet, int tam) {
     mergesort(vet, 0, tam-1);
 }
 
-/*Implementação do QuickSort*/
-void quickSort(int *vet, int inicio, int fim, int *contador) {
-    (*contador)++;
-    if (inicio < fim) {
-        int posPivot = particiona(vet, inicio, fim);
-        quickSort(vet, inicio, posPivot - 1, contador);
-        quickSort(vet, posPivot + 1, fim, contador);
-    }
-}
-
 /* Implementação do particiona (auxiliar para quicksort) */
 int particiona(int *vet, int inicio, int fim) {
     int pivo = vet[inicio], pos = inicio, temp;
@@ -139,4 +129,14 @@ int particiona(int *vet, int inicio, int fim) {
     vet[pos] = temp;
 
     return pos;
+}
+
+/*Implementação do QuickSort*/
+void quicksort(int *vet, int inicio, int fim, int *contador) {
+    (*contador)++;
+    if (inicio < fim) {
+        int posPivot = particiona(vet, inicio, fim);
+        quicksort(vet, inicio, posPivot - 1, contador);
+        quicksort(vet, posPivot + 1, fim, contador);
+    }
 }
