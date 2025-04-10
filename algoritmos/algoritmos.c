@@ -87,15 +87,15 @@ void merge(int *vet, int low, int mid, int high) {
     }
 
     for (int i = low; i <= high; i++) {
-        vet[i] = vet[i - low];
+        vet[i] = temp[i - low];
     }
 }
 
-/*Implementação do MergeSort*/
+/*Implementação do MergeSort*/ // PRECISA CORRIGIR
 void mergesort(int *vet, int low, int high) {
     if (low >= high)
         return;
-
+    
     int mid = (low + high) / 2;
 
     mergesort(vet, low, mid);
