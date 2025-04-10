@@ -23,6 +23,7 @@
 #include "testeUtils.h"
 #include "../utils/utils.h"
 #include "../algoritmos/algoritmos.h"
+#include "testeAlgoritmos.h"
 
 typedef struct function {
     void (*f)(int*, int);
