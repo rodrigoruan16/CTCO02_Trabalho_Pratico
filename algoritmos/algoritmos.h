@@ -22,13 +22,13 @@ void insertionsort(int *vet, int tam);
 void selectionsort(int *vet, int tam);
 
 /* Implementação do merge (auxiliar para mergesort) */
-void merge(int *vet, int low, int mid, int high);
+void merge(int *vet, int inicio, int meio, int fim);
 
 /*Implementação do MergeSort*/
-void mergesort(int *vet, int low, int high);
+void mergesort(int *vet, int inicio, int fim, int *contador);
 
 /*Wrap do MergeSort que converte os args padrão para o adaptado*/
-void wrapMergeSort(int *vet, int tam);
+int wrapMergeSort(int *vet, int tam);
 
 /*Implementação do QuickSort*/
 void quicksort(int *vet, int inicio, int fim, int *contador);

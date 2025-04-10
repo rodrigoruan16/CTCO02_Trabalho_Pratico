@@ -55,57 +55,59 @@ void selectionsort(int *vet, int tam) {
 }
 
 /* Implementação do merge (auxiliar para mergesort) */
-void merge(int *vet, int low, int mid, int high) {
-    int *temp = alocaVetor(high - low + 1);
+void merge(int *vet, int inicio, int meio, int fim) {
+    int *temp = alocaVetor(fim - inicio + 1);
+
+    int i = inicio, j = meio + 1, idx = 0;
     if (!temp)
         return;
 
-    int left = low, right = mid + 1, idx = 0;
-
-    while (left <= mid && right <= high) {
-        if (vet[left] <= vet[right]) {
-            temp[idx] = vet[left];
-            left++;
+    while (i <= meio && j <= fim) {
+        if (vet[i] <= vet[j]) {
+            temp[idx] = vet[i];
+            i++;
         } else {
-            temp[idx] = vet[right];
-            right++;
+            temp[idx] = vet[j];
+            j++;
         }
 
         idx++;
     }
 
-    while (left <= mid) {
-        temp[idx] = vet[left];
-        left++;
+    while (i <= meio) {
+        temp[idx] = vet[i];
         idx++;
+        i++;
     }
 
-    while (right <= high) {
-        temp[idx] = vet[right];
-        right++;
+    while (j <= fim) {
+        temp[idx] = vet[j];
         idx++;
+        j++;
     }
 
-    for (int i = low; i <= high; i++) {
-        vet[i] = temp[i - low];
-    }
+    for (int k = inicio, y = 0; k <= fim; k++, y++)
+        vet[k] = temp[y];
 }
 
 /*Implementação do MergeSort*/ // PRECISA CORRIGIR
-void mergesort(int *vet, int low, int high) {
-    if (low >= high)
+void mergesort(int *vet, int inicio, int fim, int *contador) {
+    (*contador)++;
+    if (inicio >= fim)
         return;
-    
-    int mid = (low + high) / 2;
 
-    mergesort(vet, low, mid);
-    mergesort(vet, mid + 1, high);
-    merge(vet, low, mid, high);
+    int meio = (inicio + fim) / 2;
+
+    mergesort(vet, inicio, meio, contador);
+    mergesort(vet, meio + 1, fim, contador);
+    merge(vet, inicio, meio, fim);
 }
 
 /*Wrap do MergeSort*/
-void wrapMergeSort(int *vet, int tam) {
-    mergesort(vet, 0, tam-1);
+int wrapMergeSort(int *vet, int tam) {
+    int contador = 0;
+    mergesort(vet, 0, tam-1, &contador);
+    return contador;
 }
 
 /* Implementação do particiona (auxiliar para quicksort) */
