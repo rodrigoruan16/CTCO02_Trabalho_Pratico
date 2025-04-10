@@ -104,4 +104,34 @@ void mergesort(int *vet, int low, int high) {
 }
 
 /*Implementação do QuickSort*/
-void quicksort(int *vet, int tam);
+void quickSort(int *vet, int inicio, int fim, int *contador) {
+    (*contador)++;
+    if (inicio < fim) {
+        int posPivot = particiona(vet, inicio, fim);
+        quickSort(vet, inicio, posPivot - 1, contador);
+        quickSort(vet, posPivot + 1, fim, contador);
+    }
+}
+
+/* Implementação do particiona (auxiliar para quicksort) */
+int particiona(int *vet, int inicio, int fim) {
+    int pivo = vet[inicio], pos = inicio, temp;
+
+    for (int i = inicio + 1; i <= fim; i++) {
+        if (vet[i] < pivo) {
+            pos++;
+
+            if (i != pos) {
+                temp = vet[i];
+                vet[i] = vet[pos];
+                vet[pos] = temp;
+            }
+        }
+    }
+
+    temp = vet[inicio];
+    vet[inicio] = vet[pos];
+    vet[pos] = temp;
+
+    return pos;
+}
