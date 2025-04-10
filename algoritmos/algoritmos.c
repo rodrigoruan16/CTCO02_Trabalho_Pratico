@@ -103,6 +103,11 @@ void mergesort(int *vet, int low, int high) {
     merge(vet, low, mid, high);
 }
 
+/*Wrap do MergeSort*/
+void wrapMergeSort(int *vet, int tam) {
+    mergesort(vet, 0, tam-1);
+}
+
 /*Implementação do QuickSort*/
 void quickSort(int *vet, int inicio, int fim, int *contador) {
     (*contador)++;
