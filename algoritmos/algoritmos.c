@@ -90,7 +90,7 @@ void merge(int *vet, int inicio, int meio, int fim) {
         vet[k] = temp[y];
 }
 
-/*Implementação do MergeSort*/ // PRECISA CORRIGIR
+/*Implementação do MergeSort*/
 void mergesort(int *vet, int inicio, int fim, int *contador) {
     (*contador)++;
     if (inicio >= fim)
@@ -104,10 +104,9 @@ void mergesort(int *vet, int inicio, int fim, int *contador) {
 }
 
 /*Wrap do MergeSort*/
-int wrapMergeSort(int *vet, int tam) {
+void wrapMergeSort(int *vet, int tam) {
     int contador = 0;
     mergesort(vet, 0, tam-1, &contador);
-    return contador;
 }
 
 /* Implementação do particiona (auxiliar para quicksort) */
@@ -141,4 +140,10 @@ void quicksort(int *vet, int inicio, int fim, int *contador) {
         quicksort(vet, inicio, posPivot - 1, contador);
         quicksort(vet, posPivot + 1, fim, contador);
     }
+}
+
+/*Wrap do QuickSort*/
+void wrapQuickSort(int *vet, int tam) {
+    int contador = 0;
+    quicksort(vet, 0, tam-1, &contador);
 }

@@ -28,10 +28,13 @@ void merge(int *vet, int inicio, int meio, int fim);
 void mergesort(int *vet, int inicio, int fim, int *contador);
 
 /*Wrap do MergeSort que converte os args padrão para o adaptado*/
-int wrapMergeSort(int *vet, int tam);
+void wrapMergeSort(int *vet, int tam);
 
 /*Implementação do QuickSort*/
 void quicksort(int *vet, int inicio, int fim, int *contador);
 
 /* Implementação do particiona (auxiliar para quicksort) */
 int particiona(int *vet, int inicio, int fim);
+
+/* Wrap do QuickSort que converte os args padrão para o adaptado */
+void wrapQuickSort(int *vet, int tam);
