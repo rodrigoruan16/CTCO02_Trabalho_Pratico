@@ -21,6 +21,9 @@ void insertionsort(int *vet, int tam);
 /*Implementação do SelectionSort*/
 void selectionsort(int *vet, int tam);
 
+/*Implementação do ShellSort*/
+void shellsort(int *vet, int tam);
+
 /* Implementação do merge (auxiliar para mergesort) */
 void merge(int *vet, int inicio, int meio, int fim);
 

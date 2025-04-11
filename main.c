@@ -7,7 +7,7 @@ int main() {
 
     int contador = 0;
 
-    insertionsort(vet, sizeof(vet)/sizeof(int));
+    shellsort(vet, sizeof(vet)/sizeof(int));
 
     for (int i = 0; i < sizeof(vet)/sizeof(int); i++) {
         printf("%d ", vet[i]);

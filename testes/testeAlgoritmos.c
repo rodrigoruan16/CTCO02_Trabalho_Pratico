@@ -32,7 +32,7 @@ typedef struct function {
 
 // VARIAVEIS RELACIONADAS AOS TESTES! //
 
-const int NUMBER_OF_SORT_FUNCTIONS = 4;
+const int NUMBER_OF_SORT_FUNCTIONS = 5;
 const int NUMBER_OF_TESTS = 10;
 const int MAX_VECTOR_NUMBER = INT_MAX;
 const int MAX_NUMBER_OF_ELEMENTS_IN_VECTOR = 10;
@@ -40,7 +40,8 @@ function functions[] = {
     {insertionsort, "Insertion Sort"},
     {selectionsort, "Selection Sort"},
     {wrapMergeSort, "Merge Sort"},
-    {wrapQuickSort, "Quick Sort"}
+    {wrapQuickSort, "Quick Sort"},
+    {shellsort, "Shell Sort"}
 };
 
 // ---------------------------------- //
@@ -56,6 +57,11 @@ void testSort(const void f(int *, int), char funcName[]) {
     for (int i = 0; i < NUMBER_OF_TESTS; i++) {
         int qtyElementos = MAX_NUMBER_OF_ELEMENTS_IN_VECTOR, value;
         int *vet = alocaVetor(qtyElementos), *copy = alocaVetor(qtyElementos);
+
+        if(vet == NULL || copy == NULL) {
+            printf("Falha na alocação dos vetores (vet e copy)\n");
+            return;
+        }
 
         for (int j = 0, k = qtyElementos - 1; j < qtyElementos; j++, k--) {
             value = (rand() % MAX_VECTOR_NUMBER);

@@ -54,6 +54,23 @@ void selectionsort(int *vet, int tam) {
     }
 }
 
+/*Implementação do ShellSort*/
+void shellsort(int *vet, int tam) {
+    for(int gap = tam/2; gap > 0; gap = gap/2) {
+        for(int j = gap; j < tam; j++) {
+            for(int k = j - gap; k >= 0; k-=gap) {
+                if(vet[k+gap] >= vet[k])
+                    break;
+                else {
+                    int temp = vet[k+gap];
+                    vet[k+gap] = vet[k];
+                    vet[k] = temp;
+                }
+            }
+        }
+    }
+};
+
 /* Implementação do merge (auxiliar para mergesort) */
 void merge(int *vet, int inicio, int meio, int fim) {
     int *temp = alocaVetor(fim - inicio + 1);
