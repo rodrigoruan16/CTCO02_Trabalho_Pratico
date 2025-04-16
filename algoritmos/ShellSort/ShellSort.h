@@ -16,4 +16,4 @@
 #include <stdlib.h>
 
 /*Interface do ShellSort*/
-void shellsort(int *vet, int tam);
+int *shellsort(int *vet, int tam);

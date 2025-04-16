@@ -14,4 +14,4 @@
  ******************************************************************************/
 
 /*Implementação da interface do Insertion Sort */
-void insertionsort(int *vet, int tam);
+int *insertionsort(int *vet, int tam);

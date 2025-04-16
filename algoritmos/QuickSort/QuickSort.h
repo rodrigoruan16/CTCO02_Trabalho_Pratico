@@ -16,10 +16,10 @@
 #include <stdlib.h>
 
 /* Interface do auxiliar particiona */
-int particiona(int *vet, int inicio, int fim);
+int particiona(int *vet, int inicio, int fim, int *trocas, int *comparacoes);
 
 /* Interface do Quick Sort */
-void quicksort(int *vet, int inicio, int fim);
+void quicksort(int *vet, int inicio, int fim, int *trocas, int *comparacoes);
 
 /* Interface do wrapper do Quick Sort */
-void wrapQuickSort(int *vet, int tam);
+int *wrapQuickSort(int *vet, int tam);

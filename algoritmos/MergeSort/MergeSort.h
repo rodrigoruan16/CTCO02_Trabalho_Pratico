@@ -14,10 +14,10 @@
  ******************************************************************************/
 
 /* Interface da auxiliar merge */
-void merge(int *vet, int inicio, int meio, int fim);
+void merge(int *vet, int inicio, int meio, int fim, int *trocas, int *comparacoes);
 
 /*Interface do Merge Sort*/
-void mergesort(int *vet, int inicio, int fim);
+void mergesort(int *vet, int inicio, int fim, int *trocas, int *comparacoes);
 
 /*Interface do wrapper do Merge Sort*/
-void wrapMergeSort(int *vet, int tam);
+int *wrapMergeSort(int *vet, int tam);

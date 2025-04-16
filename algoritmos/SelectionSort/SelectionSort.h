@@ -16,4 +16,4 @@
 #include <stdlib.h>
 
 /*Interface do Selection Sort*/
-void selectionsort(int *vet, int tam);
+int *selectionsort(int *vet, int tam);

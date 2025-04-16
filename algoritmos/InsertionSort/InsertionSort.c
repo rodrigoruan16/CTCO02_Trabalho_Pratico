@@ -14,18 +14,24 @@
  ******************************************************************************/
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdlib.h>
+#include "../../utils/utils.h"
 #include "InsertionSort.h"
 
 /*Implementação do InsertionSort*/
-void insertionsort(int *vet, int tam)
+int *insertionsort(int *vet, int tam)
 {
+    int trocas, comparacoes;
+    trocas = comparacoes = 0;
+
     if (!vet || tam == 0)
-        return;
+        return NULL;
 
     for (int i = 1; i < tam; i++)
     {
         int marcador = i - 1, elemento = vet[i];
 
+        comparacoes++;
         while (marcador >= 0 && vet[marcador] > elemento)
         {
             vet[marcador + 1] = vet[marcador];
@@ -34,4 +40,10 @@ void insertionsort(int *vet, int tam)
 
         vet[marcador + 1] = elemento;
     }
+
+    int *vetor = alocaVetor(2);
+    vetor[0] = trocas;
+    vetor[1] = comparacoes;
+
+    return vetor;
 }

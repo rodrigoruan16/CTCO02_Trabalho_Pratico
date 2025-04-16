@@ -14,21 +14,27 @@
  ******************************************************************************/
 #include <stdio.h>
 #include <stdlib.h>
+#include "../../utils/utils.h"
 #include "ShellSort.h"
 
 /*Implementação do ShellSort*/
-void shellsort(int *vet, int tam)
+int *shellsort(int *vet, int tam)
 {
+    int trocas, comparacoes;
+    trocas = comparacoes = 0;
+
     for (int gap = tam / 2; gap > 0; gap = gap / 2)
     {
         for (int j = gap; j < tam; j++)
         {
             for (int k = j - gap; k >= 0; k -= gap)
             {
+                comparacoes++;
                 if (vet[k + gap] >= vet[k])
                     break;
                 else
                 {
+                    trocas++;
                     int temp = vet[k + gap];
                     vet[k + gap] = vet[k];
                     vet[k] = temp;
@@ -36,4 +42,9 @@ void shellsort(int *vet, int tam)
             }
         }
     }
+
+    int *vetor = alocaVetor(2);
+    vetor[0] = trocas;
+    vetor[1] = comparacoes;
+    return vetor;
 };

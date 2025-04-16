@@ -18,7 +18,7 @@
 #include "MergeSort.h"
 
 /* Implementação do merge (auxiliar para mergesort) */
-void merge(int *vet, int inicio, int meio, int fim)
+void merge(int *vet, int inicio, int meio, int fim, int *trocas, int *comparacoes)
 {
     int *temp = alocaVetor(fim - inicio + 1);
 
@@ -28,6 +28,7 @@ void merge(int *vet, int inicio, int meio, int fim)
 
     while (i <= meio && j <= fim)
     {
+        (*comparacoes)++;
         if (vet[i] <= vet[j])
         {
             temp[idx] = vet[i];
@@ -61,21 +62,27 @@ void merge(int *vet, int inicio, int meio, int fim)
 }
 
 /*Implementação do MergeSort*/
-void mergesort(int *vet, int inicio, int fim)
+void mergesort(int *vet, int inicio, int fim, int *trocas, int *comparacoes)
 {
+    (*comparacoes)++;
     if (inicio >= fim)
         return;
 
     int meio = (inicio + fim) / 2;
 
-    mergesort(vet, inicio, meio);
-    mergesort(vet, meio + 1, fim);
-    merge(vet, inicio, meio, fim);
+    mergesort(vet, inicio, meio, trocas, comparacoes);
+    mergesort(vet, meio + 1, fim, trocas, comparacoes);
+    merge(vet, inicio, meio, fim, trocas, comparacoes);
 }
 
 /*Wrap do MergeSort*/
-void wrapMergeSort(int *vet, int tam)
+int *wrapMergeSort(int *vet, int tam)
 {
-    int contador = 0;
-    mergesort(vet, 0, tam - 1);
+    int trocas, comparacoes;
+    trocas = comparacoes = 0;
+    mergesort(vet, 0, tam - 1, &trocas, &comparacoes);
+    int *vetor = alocaVetor(2);
+    vetor[0] = trocas;
+    vetor[1] = comparacoes;
+    return vetor;
 }

@@ -33,7 +33,7 @@
 
 typedef struct function
 {
-    void (*f)(int *, int);
+    int* (*f)(int *, int);
     char name[50];
 } function;
 
@@ -45,12 +45,13 @@ function functions[] = {
     {wrapQuickSort, "Quick Sort"},
     {shellsort, "Shell Sort"}};
 
-void testSort(const void f(int *, int), char funcName[], int *vet, int tamanho, int porcentagem, int repeticoes)
+void testSort(int* f(int *, int), char funcName[], int *vet, int tamanho, int porcentagem, int repeticoes)
 {
     sleep(1);
 
     double soma = 0;
     int *copy;
+    SORT_INFORMATIONS *s;
     
     for (int i = 0; i < repeticoes; i++)
     {
@@ -62,13 +63,16 @@ void testSort(const void f(int *, int), char funcName[], int *vet, int tamanho, 
             return;
         }
 
-        soma += runTimedSort(f, copy, tamanho);
+        s = runTimedSort(f, copy, tamanho);
+        soma += getTime(s);
         free(copy);
     }
 
     double time = soma / repeticoes;
     escreveArquivo("resultados.csv", funcName, time, tamanho);
     printf("%s executou em %f milissegundos.\n", funcName, time);
+    printf("Trocas: %d - Comparações: %d\n", getTrocas(s), getComparacoes(s));
+    free(s);
 }
 
 int main()
