@@ -45,7 +45,7 @@ function functions[] = {
     {wrapQuickSort, "Quick Sort"},
     {shellsort, "Shell Sort"}};
 
-void testSort(int* f(int *, int), char funcName[], int *vet, int tamanho, int porcentagem, int repeticoes)
+void testSort(int* f(int *, int), char funcName[], int *vet, int tamanho, int porcentagem, int repeticoes, char tipoVet[])
 {
     sleep(1);
 
@@ -69,7 +69,7 @@ void testSort(int* f(int *, int), char funcName[], int *vet, int tamanho, int po
     }
 
     double time = soma / repeticoes;
-    escreveArquivo("resultados.csv", funcName, time, tamanho, getComparacoes(s), getTrocas(s));
+    escreveArquivo("resultados.csv", funcName, time, tamanho, getComparacoes(s), getTrocas(s), tipoVet);
     printf("%s executou em %f milissegundos.\n", funcName, time);
     printf("Trocas: %d - Comparações: %d\n", getTrocas(s), getComparacoes(s));
     free(s);
@@ -78,6 +78,7 @@ void testSort(int* f(int *, int), char funcName[], int *vet, int tamanho, int po
 int main()
 {
     int tipo, tamanho, porcentagem = 0, *vet, repeticoes = 1;
+    char str_tipo[10];
     printf("1 - Gerar vetor aleatorio\n");
     printf("2 - Gerar vetor em ordem crescente\n");
     printf("3 - Gerar vetor em ordem decrescente\n");
@@ -105,8 +106,12 @@ int main()
         return 0;
     }
 
+    if(sprintf(str_tipo, "%d_%d", tipo, porcentagem) == 0) {
+        strcpy(str_tipo, " ");
+    }
+
     for (int i = 0; i < NUMBER_OF_SORT_FUNCTIONS; i++)
-        testSort(functions[i].f, functions[i].name, vet, tamanho, porcentagem, repeticoes);
+        testSort(functions[i].f, functions[i].name, vet, tamanho, porcentagem, repeticoes, str_tipo);
 
     free(vet);
 
