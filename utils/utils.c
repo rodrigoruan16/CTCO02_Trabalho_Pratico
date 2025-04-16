@@ -161,7 +161,7 @@ void escreveArquivo(char *nomeArquivo, char *nomeAlgo, double exec_time, int inp
         return;
     
     if(!arquivoExiste) {
-        fprintf(arq, "Nome do Algoritmo, Tamanho da Entrada, Tempo de Execução\n");
+        fprintf(arq, "Nome do Algoritmo;Tamanho da Entrada;Tempo de Execucao\n");
     }
     
     fprintf(arq, "%s;%d;%f\n", nomeAlgo, inputSize, exec_time);
