@@ -51,10 +51,13 @@ void testSort(const void f(int *, int), char funcName[], int *vet, int tamanho, 
 
     double soma = 0;
     int *copy;
-    for (int i = 0; i < repeticoes; i++) {
+    
+    for (int i = 0; i < repeticoes; i++)
+    {
         copy = copiaVetor(vet, tamanho);
 
-        if (!copy) {
+        if (!copy)
+        {
             printf("Falha ao alocar vetor para %s\n", funcName);
             return;
         }
@@ -90,7 +93,8 @@ int main()
         repeticoes = 5;
 
     vet = criaVetorTipo(tipo, tamanho, porcentagem);
-    if (!vet) {
+    if (!vet)
+    {
         printf("Falha ao alocar vetor.\n");
         return 0;
     }
