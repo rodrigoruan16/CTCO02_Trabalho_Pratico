@@ -96,3 +96,12 @@ Merge Sort;1;0.000000
 Insertion Sort;2;0.000200
 Selection Sort;2;0.000400
 Merge Sort;2;0.001000
+Insertion Sort;100;0.024400
+Selection Sort;100;0.045600
+Insertion Sort;100;0.030400
+Selection Sort;100;0.050000
+Merge Sort;100;0.028200
+Quick Sort;100;0.011000
+Shell Sort;100;0.018000
+Insertion Sort;100;0.006200
+Selection Sort;100;0.041000
