@@ -50,15 +50,18 @@ void testSort(const void f(int *, int), char funcName[], int *vet, int tamanho, 
     sleep(1);
 
     double soma = 0;
-    for (int i = 0; i < repeticoes; i++)
-        soma += runTimedSort(f, vet, tamanho);
+    int *copy;
+    for (int i = 0; i < repeticoes; i++) {
+        copy = copiaVetor(vet, tamanho);
+        soma += runTimedSort(f, copy, tamanho);
+    }
 
     printf("%s executou em %f milissegundos.\n", funcName, soma / repeticoes);
 }
 
 int main()
 {
-    int tipo, tamanho, porcentagem = 0, *vet, *copy, repeticoes = 1;
+    int tipo, tamanho, porcentagem = 0, *vet, repeticoes = 1;
     printf("1 - Gerar vetor aleatorio\n");
     printf("2 - Gerar vetor em ordem crescente\n");
     printf("3 - Gerar vetor em ordem decrescente\n");
@@ -79,12 +82,10 @@ int main()
     if (tipo == 1)
         repeticoes = 5;
 
-    vet = criaVetorTipo(tipo, tamanho, porcentagem);
-
     for (int i = 0; i < NUMBER_OF_SORT_FUNCTIONS; i++)
     {
-        copy = copiaVetor(vet, tamanho);
-        testSort(functions[i].f, functions[i].name, copy, tamanho, porcentagem, repeticoes);
+        vet = criaVetorTipo(tipo, tamanho, porcentagem);
+        testSort(functions[i].f, functions[i].name, vet, tamanho, porcentagem, repeticoes);
     }
 
     return 0;
