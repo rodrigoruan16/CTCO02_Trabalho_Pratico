@@ -45,16 +45,20 @@ function functions[] = {
     {wrapQuickSort, "Quick Sort"},
     {shellsort, "Shell Sort"}};
 
-void testSort(const void f(int *, int), char funcName[], int *vet, int tamanho, int porcentagem)
+void testSort(const void f(int *, int), char funcName[], int *vet, int tamanho, int porcentagem, int repeticoes)
 {
     sleep(1);
-    double time = runTimedSort(f, vet, tamanho);
-    printf("%s executou em %f milissegundos.\n", funcName, time);
+
+    double soma = 0;
+    for (int i = 0; i < repeticoes; i++)
+        soma += runTimedSort(f, vet, tamanho);
+
+    printf("%s executou em %f milissegundos.\n", funcName, soma / repeticoes);
 }
 
 int main()
 {
-    int tipo, tamanho, porcentagem = 0, *vet;
+    int tipo, tamanho, porcentagem = 0, *vet, *copy, repeticoes = 1;
     printf("1 - Gerar vetor aleatorio\n");
     printf("2 - Gerar vetor em ordem crescente\n");
     printf("3 - Gerar vetor em ordem decrescente\n");
@@ -69,12 +73,18 @@ int main()
     {
         printf("Digite a porcentagem para quase ordenado: ");
         scanf("%d", &porcentagem);
+        repeticoes = 5;
     }
+
+    if (tipo == 1)
+        repeticoes = 5;
+
+    vet = criaVetorTipo(tipo, tamanho, porcentagem);
 
     for (int i = 0; i < NUMBER_OF_SORT_FUNCTIONS; i++)
     {
-        vet = criaVetorTipo(tipo, tamanho, porcentagem);
-        testSort(functions[i].f, functions[i].name, vet, tamanho, porcentagem);
+        copy = copiaVetor(vet, tamanho);
+        testSort(functions[i].f, functions[i].name, copy, tamanho, porcentagem, repeticoes);
     }
 
     return 0;

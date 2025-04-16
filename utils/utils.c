@@ -32,6 +32,22 @@ int *alocaVetor(int tam)
     return vetor;
 }
 
+/* Cria cópia de um vetor */
+int *copiaVetor(int *vet, int tam)
+{
+    if (tam <= 0)
+        return NULL;
+
+    int *vetor = alocaVetor(tam);
+    if (!vetor)
+        return NULL;
+
+    for (int i = 0; i < tam; i++)
+        vetor[i] = vet[i];
+
+    return vetor;
+}
+
 /* Printa os elementos de um vetor */
 void printaVetor(int *vet, int tam)
 {
@@ -71,7 +87,27 @@ deve ser gerada e a porcentagem é o inteiro que determina a porcentagem de
 dados desordenados. A função retorna o vetor previamente preenchido.*/
 int *geraQuaseOrdenados(int tam, int porcentagem)
 {
-    return NULL;
+    int *vet, numDesordenados, idx1, idx2, temp;
+    if (tam <= 0 || porcentagem < 0 || porcentagem > 100)
+        return NULL;
+
+    vet = geraOrdenados(tam, 0);
+    if (!vet)
+        return NULL;
+
+    numDesordenados = (tam * porcentagem) / 100;
+
+    srand(time(NULL));
+
+    for (int i = 0; i < numDesordenados; i++)
+    {
+        idx1 = rand() % tam, idx2 = rand() % tam;
+        temp = vet[idx1];
+        vet[idx1] = vet[idx2];
+        vet[idx2] = temp;
+    }
+
+    return vet;
 }
 
 /*O sistema deve gerar conjuntos de dados aleatórios de diferentes tamanhos.

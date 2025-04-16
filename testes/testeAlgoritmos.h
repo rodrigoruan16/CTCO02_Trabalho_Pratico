@@ -17,4 +17,4 @@
 
 typedef struct function function;
 
-void testSort(const void f(int *, int), char funcName[], int *vet, int tamanho, int porcentagem);
+void testSort(const void f(int *, int), char funcName[], int *vet, int tamanho, int porcentagem, int repeticoes);

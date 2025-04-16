@@ -18,6 +18,9 @@
 /* Aloca um vetor de tamanho @tam */
 int *alocaVetor(int tam);
 
+/* Cria cópia de um vetor */
+int *copiaVetor(int *vet, int tam);
+
 /*O sistema deve gerar conjuntos de dados ordenados de forma crescente e
 decrescente. Para tanto, deve haver uma função com a assinatura abaixo, onde
 tam é a quantidade de elementos e ordem define o tipo de ordenação: 0 para
