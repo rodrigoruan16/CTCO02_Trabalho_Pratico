@@ -53,7 +53,14 @@ void testSort(const void f(int *, int), char funcName[], int *vet, int tamanho, 
     int *copy;
     for (int i = 0; i < repeticoes; i++) {
         copy = copiaVetor(vet, tamanho);
+
+        if (!copy) {
+            printf("Falha ao alocar vetor para %s\n", funcName);
+            return;
+        }
+
         soma += runTimedSort(f, copy, tamanho);
+        free(copy);
     }
 
     printf("%s executou em %f milissegundos.\n", funcName, soma / repeticoes);
@@ -82,11 +89,16 @@ int main()
     if (tipo == 1)
         repeticoes = 5;
 
-    for (int i = 0; i < NUMBER_OF_SORT_FUNCTIONS; i++)
-    {
-        vet = criaVetorTipo(tipo, tamanho, porcentagem);
-        testSort(functions[i].f, functions[i].name, vet, tamanho, porcentagem, repeticoes);
+    vet = criaVetorTipo(tipo, tamanho, porcentagem);
+    if (!vet) {
+        printf("Falha ao alocar vetor.\n");
+        return 0;
     }
+
+    for (int i = 0; i < NUMBER_OF_SORT_FUNCTIONS; i++)
+        testSort(functions[i].f, functions[i].name, vet, tamanho, porcentagem, repeticoes);
+
+    free(vet);
 
     return 0;
 }
