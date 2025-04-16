@@ -1,0 +1,11 @@
+Nome do Algoritmo, Tamanho da Entrada, Tempo de Execução
+Insertion Sort;100;0.009000
+Selection Sort;100;0.019200
+Merge Sort;100;0.017000
+Quick Sort;100;0.003800
+Shell Sort;100;0.005400
+Insertion Sort;105;0.008600
+Selection Sort;105;0.017800
+Merge Sort;105;0.019400
+Quick Sort;105;0.003600
+Shell Sort;105;0.006000

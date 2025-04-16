@@ -62,7 +62,7 @@ int *leArquivo(char *nomeArquivo, int qtd);
     .
     etc
 */
-void escreveArquivo(char *nomeArquivo, char *nomeAlgo, int exec_time, int inputSize);
+void escreveArquivo(char *nomeArquivo, char *nomeAlgo, double exec_time, int inputSize);
 
 /*Esta função implementa a busca binária e sua saída é salva no vetor res
   res[0] recebe 1 se encontrou o elemento buscado e 0 caso contrário

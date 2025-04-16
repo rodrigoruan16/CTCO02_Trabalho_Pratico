@@ -66,7 +66,9 @@ void testSort(const void f(int *, int), char funcName[], int *vet, int tamanho, 
         free(copy);
     }
 
-    printf("%s executou em %f milissegundos.\n", funcName, soma / repeticoes);
+    double time = soma / repeticoes;
+    escreveArquivo("resultados.csv", funcName, time, tamanho);
+    printf("%s executou em %f milissegundos.\n", funcName, time);
 }
 
 int main()

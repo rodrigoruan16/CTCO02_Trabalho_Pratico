@@ -16,6 +16,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h> // acesso a access()
 #include <time.h>
 
 /* Aloca um vetor de tamanho @tam */
@@ -149,7 +150,23 @@ int *leArquivo(char *nomeArquivo, int qtd);
     .
     etc
 */
-void escreveArquivo(char *nomeArquivo, char *nomeAlgo, int exec_time, int inputSize);
+void escreveArquivo(char *nomeArquivo, char *nomeAlgo, double exec_time, int inputSize) {
+    FILE *arq;
+    int arquivoExiste = 0;
+    if(access(nomeArquivo, F_OK) == 0)
+        arquivoExiste = 1;
+
+    arq = fopen(nomeArquivo, arquivoExiste ? "a" : "w");
+    if(!arq)
+        return;
+    
+    if(!arquivoExiste) {
+        fprintf(arq, "Nome do Algoritmo, Tamanho da Entrada, Tempo de Execução\n");
+    }
+    
+    fprintf(arq, "%s;%d;%f\n", nomeAlgo, inputSize, exec_time);
+    fclose(arq);
+};
 
 /*Esta função implementa a busca binária e sua saída é salva no vetor res
   res[0] recebe 1 se encontrou o elemento buscado e 0 caso contrário
