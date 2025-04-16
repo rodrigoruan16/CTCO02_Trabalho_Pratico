@@ -150,7 +150,7 @@ int *leArquivo(char *nomeArquivo, int qtd);
     .
     etc
 */
-void escreveArquivo(char *nomeArquivo, char *nomeAlgo, double exec_time, int inputSize) {
+void escreveArquivo(char *nomeArquivo, char *nomeAlgo, double exec_time, int inputSize, int comparacoes, int trocas) {
     FILE *arq;
     int arquivoExiste = 0;
     if(access(nomeArquivo, F_OK) == 0)
@@ -161,10 +161,10 @@ void escreveArquivo(char *nomeArquivo, char *nomeAlgo, double exec_time, int inp
         return;
     
     if(!arquivoExiste) {
-        fprintf(arq, "Nome do Algoritmo;Tamanho da Entrada;Tempo de Execucao\n");
+        fprintf(arq, "Nome do Algoritmo;Tamanho da Entrada;Tempo de Execucao; Trocas; Comparacoes\n");
     }
     
-    fprintf(arq, "%s;%d;%f\n", nomeAlgo, inputSize, exec_time);
+    fprintf(arq, "%s;%d;%f\n", nomeAlgo, inputSize, exec_time, trocas, comparacoes);
     fclose(arq);
 };
 
