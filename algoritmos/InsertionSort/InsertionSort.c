@@ -21,21 +21,24 @@
 /*Implementação do InsertionSort*/
 int *insertionsort(int *vet, int tam)
 {
-    int trocas, comparacoes;
-    trocas = comparacoes = 0;
+    int trocas = 0, comparacoes = 0;
 
     if (!vet || tam == 0)
         return NULL;
 
     for (int i = 1; i < tam; i++)
     {
-        int marcador = i - 1, elemento = vet[i];
+        int marcador = i - 1;
+        int elemento = vet[i];
 
-        comparacoes++;
+        comparacoes++; // Comparacao entre vet[marcador] e elemento
         while (marcador >= 0 && vet[marcador] > elemento)
         {
             vet[marcador + 1] = vet[marcador];
             marcador--;
+
+            if (marcador >= 0)
+                comparacoes++;
         }
 
         vet[marcador + 1] = elemento;
@@ -44,6 +47,5 @@ int *insertionsort(int *vet, int tam)
     int *vetor = alocaVetor(2);
     vetor[0] = trocas;
     vetor[1] = comparacoes;
-
     return vetor;
 }

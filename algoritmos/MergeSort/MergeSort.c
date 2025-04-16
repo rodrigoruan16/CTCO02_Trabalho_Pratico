@@ -64,7 +64,6 @@ void merge(int *vet, int inicio, int meio, int fim, int *trocas, int *comparacoe
 /*Implementação do MergeSort*/
 void mergesort(int *vet, int inicio, int fim, int *trocas, int *comparacoes)
 {
-    (*comparacoes)++;
     if (inicio >= fim)
         return;
 

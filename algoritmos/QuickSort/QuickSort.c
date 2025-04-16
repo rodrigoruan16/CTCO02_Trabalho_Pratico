@@ -51,7 +51,6 @@ int particiona(int *vet, int inicio, int fim, int *trocas, int *comparacoes)
 /*Implementação do QuickSort*/
 void quicksort(int *vet, int inicio, int fim, int *trocas, int *comparacoes)
 {
-    (*comparacoes)++;
     if (inicio < fim)
     {
         int posPivot = particiona(vet, inicio, fim, trocas, comparacoes);
