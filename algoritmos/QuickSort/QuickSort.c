@@ -34,6 +34,7 @@ int particiona(int *vet, int inicio, int fim, int *trocas, int *comparacoes)
         }
     }
 
+    // test swap
     (*trocas)++;
     int temp = vet[i + 1];
     vet[i + 1] = vet[fim];
