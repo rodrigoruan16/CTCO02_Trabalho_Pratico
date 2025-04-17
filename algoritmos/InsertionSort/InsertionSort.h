@@ -12,6 +12,7 @@
  *
  * Data: 04/04/2025
  ******************************************************************************/
+typedef unsigned long long ull;
 
 /*Implementação da interface do Insertion Sort */
-int *insertionsort(int *vet, int tam);
+ull *insertionsort(int *vet, int tam);

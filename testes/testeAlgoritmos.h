@@ -14,7 +14,7 @@
  *
  * Data: 04/04/2025
  ******************************************************************************/
-
+typedef unsigned long long ull;
 typedef struct function function;
 
-void testSort(int* f(int *, int), char funcName[], int *vet, int tamanho, int porcentagem, int repeticoes, char tipoVet[]);
+void testSort(ull* f(int *, int), char funcName[], int *vet, int tamanho, int porcentagem, int repeticoes, char tipoVet[]);

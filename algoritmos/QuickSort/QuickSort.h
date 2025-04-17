@@ -12,14 +12,13 @@
  *
  * Data: 04/04/2025
  ******************************************************************************/
-#include <stdio.h>
-#include <stdlib.h>
+typedef unsigned long long ull;
 
 /* Interface do auxiliar particiona */
-int particiona(int *vet, int inicio, int fim, int *trocas, int *comparacoes);
+int particiona(int *vet, int inicio, int fim, ull *trocas, ull *comparacoes);
 
 /* Interface do Quick Sort */
-void quicksort(int *vet, int inicio, int fim, int *trocas, int *comparacoes);
+void quicksort(int *vet, int inicio, int fim, ull *trocas, ull *comparacoes);
 
 /* Interface do wrapper do Quick Sort */
-int *wrapQuickSort(int *vet, int tam);
+ull *wrapQuickSort(int *vet, int tam);

@@ -18,6 +18,7 @@
 #include <stdlib.h>
 #include <unistd.h> // acesso a access()
 #include <time.h>
+#include "utils.h"
 
 /* Aloca um vetor de tamanho @tam */
 int *alocaVetor(int tam)
@@ -26,6 +27,20 @@ int *alocaVetor(int tam)
         return NULL;
 
     int *vetor = (int *)malloc(sizeof(int) * tam);
+
+    if (!vetor)
+        return NULL;
+
+    return vetor;
+}
+
+/* Aloca um vetor de Ull com tamanho @tam */
+ull *alocaVetorUll(int tam)
+{
+    if (tam <= 0)
+        return NULL;
+
+    ull *vetor = (ull *)malloc(sizeof(ull) * tam);
 
     if (!vetor)
         return NULL;

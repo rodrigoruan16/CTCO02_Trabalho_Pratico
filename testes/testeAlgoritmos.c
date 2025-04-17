@@ -34,7 +34,7 @@
 
 typedef struct function
 {
-    int* (*f)(int *, int);
+    ull* (*f)(int *, int);
     char name[50];
 } function;
 
@@ -47,10 +47,8 @@ function functions[] = {
     {shellsort, "Shell Sort"}
 };
 
-void testSort(int* f(int *, int), char funcName[], int *vet, int tamanho, int porcentagem, int repeticoes, char tipoVet[])
+void testSort(ull* f(int *, int), char funcName[], int *vet, int tamanho, int porcentagem, int repeticoes, char tipoVet[])
 {
-    sleep(1);
-
     double soma = 0;
     int *copy;
     SORT_INFORMATIONS *s;

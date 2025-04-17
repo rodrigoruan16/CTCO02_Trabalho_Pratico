@@ -19,9 +19,9 @@
 #include "InsertionSort.h"
 
 /*Implementação do InsertionSort*/
-int *insertionsort(int *vet, int tam)
+ull *insertionsort(int *vet, int tam)
 {
-    int trocas = 0, comparacoes = 0;
+    ull trocas = 0, comparacoes = 0;
 
     if (!vet || tam == 0)
         return NULL;
@@ -44,8 +44,13 @@ int *insertionsort(int *vet, int tam)
         vet[marcador + 1] = elemento;
     }
 
-    int *vetor = alocaVetor(2);
+    ull *vetor = alocaVetorUll(2);
+
+    if (!vetor)
+        return NULL;
+
     vetor[0] = trocas;
     vetor[1] = comparacoes;
+
     return vetor;
 }

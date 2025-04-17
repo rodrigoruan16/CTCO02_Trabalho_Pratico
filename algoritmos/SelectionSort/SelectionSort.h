@@ -12,8 +12,7 @@
  *
  * Data: 04/04/2025
  ******************************************************************************/
-#include <stdio.h>
-#include <stdlib.h>
+typedef unsigned long long ull;
 
 /*Interface do Selection Sort*/
-int *selectionsort(int *vet, int tam);
+ull *selectionsort(int *vet, int tam);

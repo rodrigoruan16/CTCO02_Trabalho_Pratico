@@ -14,9 +14,13 @@
  *
  * Data: 04/04/2025
  ******************************************************************************/
+typedef unsigned long long ull;
 
 /* Aloca um vetor de tamanho @tam */
 int *alocaVetor(int tam);
+
+/* Aloca um vetor de Ull com tamanho @tam */
+ull *alocaVetorUll(int tam);
 
 /* Cria cópia de um vetor */
 int *copiaVetor(int *vet, int tam);

@@ -18,10 +18,9 @@
 #include "ShellSort.h"
 
 /*Implementação do ShellSort*/
-int *shellsort(int *vet, int tam)
+ull *shellsort(int *vet, int tam)
 {
-    int trocas, comparacoes;
-    trocas = comparacoes = 0;
+    ull trocas = 0, comparacoes = 0;
 
     for (int gap = tam / 2; gap > 0; gap = gap / 2)
     {
@@ -43,8 +42,13 @@ int *shellsort(int *vet, int tam)
         }
     }
 
-    int *vetor = alocaVetor(2);
+    ull *vetor = alocaVetorUll(2);
+    
+    if (!vetor)
+        return NULL;
+
     vetor[0] = trocas;
     vetor[1] = comparacoes;
+
     return vetor;
 };

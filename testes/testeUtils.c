@@ -17,18 +17,19 @@
 #include <sys/time.h>
 #include <assert.h>
 #include "testeUtils.h"
+#include "testeUtils.h"
 
 struct SORT_INFORMATIONS
 {
     double time;
-    int trocas, comparacoes;
+    ull trocas, comparacoes;
 };
 
-SORT_INFORMATIONS *runTimedSort(int *(*sorting_algorithm)(int *vet, int tam), int *vet, int tam)
+SORT_INFORMATIONS *runTimedSort(ull *(*sorting_algorithm)(int *vet, int tam), int *vet, int tam)
 {
 
     struct timeval startTime, end;
-    int *vetor;
+    ull *vetor;
 
     gettimeofday(&startTime, 0);
     vetor = sorting_algorithm(vet, tam);
@@ -51,10 +52,10 @@ double getTime(SORT_INFORMATIONS *s) {
     return s->time;
 }
 
-int getComparacoes(SORT_INFORMATIONS *s) {
+ull getComparacoes(SORT_INFORMATIONS *s) {
     return s->comparacoes;
 }
 
-int getTrocas(SORT_INFORMATIONS *s) {
+ull getTrocas(SORT_INFORMATIONS *s) {
     return s->trocas;
 }

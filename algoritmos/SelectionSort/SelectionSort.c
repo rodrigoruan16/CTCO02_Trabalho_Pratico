@@ -18,10 +18,9 @@
 #include "SelectionSort.h"
 
 /*Implementação do Selection Sort*/
-int *selectionsort(int *vet, int tam)
+ull *selectionsort(int *vet, int tam)
 {
-    int trocas, comparacoes;
-    trocas = comparacoes = 0;
+    ull trocas = 0, comparacoes = 0;
 
     if (!vet || tam == 0)
         return NULL;
@@ -37,14 +36,22 @@ int *selectionsort(int *vet, int tam)
                 menor = j;
         }
 
-        trocas++;
-        int temp = vet[i];
-        vet[i] = vet[menor];
-        vet[menor] = temp;
+        if (i != menor)
+        {
+            trocas++;
+            int temp = vet[i];
+            vet[i] = vet[menor];
+            vet[menor] = temp;
+        }
     }
 
-    int *vetor = alocaVetor(2);
+    ull *vetor = alocaVetorUll(2);
+
+    if (!vetor)
+        return NULL;
+
     vetor[0] = trocas;
     vetor[1] = comparacoes;
+
     return vetor;
 }

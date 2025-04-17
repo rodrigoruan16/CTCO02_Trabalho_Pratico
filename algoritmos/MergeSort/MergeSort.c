@@ -18,7 +18,7 @@
 #include "MergeSort.h"
 
 /* Implementação do merge (auxiliar para mergesort) */
-void merge(int *vet, int inicio, int meio, int fim, int *trocas, int *comparacoes)
+void merge(int *vet, int inicio, int meio, int fim, ull *trocas, ull *comparacoes)
 {
     int *temp = alocaVetor(fim - inicio + 1);
 
@@ -62,7 +62,7 @@ void merge(int *vet, int inicio, int meio, int fim, int *trocas, int *comparacoe
 }
 
 /*Implementação do MergeSort*/
-void mergesort(int *vet, int inicio, int fim, int *trocas, int *comparacoes)
+void mergesort(int *vet, int inicio, int fim, ull *trocas, ull *comparacoes)
 {
     if (inicio >= fim)
         return;
@@ -75,13 +75,18 @@ void mergesort(int *vet, int inicio, int fim, int *trocas, int *comparacoes)
 }
 
 /*Wrap do MergeSort*/
-int *wrapMergeSort(int *vet, int tam)
+ull *wrapMergeSort(int *vet, int tam)
 {
-    int trocas, comparacoes;
-    trocas = comparacoes = 0;
+    ull trocas = 0, comparacoes = 0;
     mergesort(vet, 0, tam - 1, &trocas, &comparacoes);
-    int *vetor = alocaVetor(2);
+
+    ull *vetor = alocaVetorUll(2);
+
+    if (!vetor)
+        return NULL;
+
     vetor[0] = trocas;
     vetor[1] = comparacoes;
+
     return vetor;
 }
