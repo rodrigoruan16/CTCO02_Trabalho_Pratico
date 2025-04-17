@@ -57,7 +57,6 @@ SORT_INFORMATIONS *runTimedSort(void (*sorting_algorithm)(int *vet, int tam, ull
     return s;
 }
 
-
 double getTime(SORT_INFORMATIONS *s) {
     return s->time;
 }

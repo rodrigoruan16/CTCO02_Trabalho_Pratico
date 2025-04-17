@@ -17,8 +17,8 @@
 #include "../../utils/utils.h"
 #include "ShellSort.h"
 
- /*Implementação do ShellSort*/
-void shellsort(int* vet, int tam, ull* trocas, ull* comparacoes)
+/*Implementação do ShellSort*/
+void shellsort(int *vet, int tam, ull *trocas, ull *comparacoes)
 {
     for (int gap = tam / 2; gap > 0; gap = gap / 2)
     {
@@ -32,9 +32,7 @@ void shellsort(int* vet, int tam, ull* trocas, ull* comparacoes)
                 else
                 {
                     (*trocas)++;
-                    int temp = vet[k + gap];
-                    vet[k + gap] = vet[k];
-                    vet[k] = temp;
+                    swap(&vet[k + gap], &vet[k]);
                 }
             }
         }

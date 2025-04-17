@@ -34,18 +34,12 @@ int *alocaVetor(int tam)
     return vetor;
 }
 
-/* Aloca um vetor de Ull com tamanho @tam */
-ull *alocaVetorUll(int tam)
+/* Realiza a troca de dois elementos */
+void swap(int *a, int *b)
 {
-    if (tam <= 0)
-        return NULL;
-
-    ull *vetor = (ull *)malloc(sizeof(ull) * tam);
-
-    if (!vetor)
-        return NULL;
-
-    return vetor;
+    int temp = *a;
+    *a = *b;
+    *b = temp;
 }
 
 /* Cria cópia de um vetor */
@@ -165,20 +159,22 @@ int *leArquivo(char *nomeArquivo, int qtd);
     .
     etc
 */
-void escreveArquivo(char *nomeArquivo, char *nomeAlgo, double exec_time, double exec_time_cpu, int inputSize, int comparacoes, int trocas, char *tipoVet) {
+void escreveArquivo(char *nomeArquivo, char *nomeAlgo, double exec_time, double exec_time_cpu, int inputSize, int comparacoes, int trocas, char *tipoVet)
+{
     FILE *arq;
     int arquivoExiste = 0;
-    if(access(nomeArquivo, F_OK) == 0)
+    if (access(nomeArquivo, F_OK) == 0)
         arquivoExiste = 1;
 
     arq = fopen(nomeArquivo, arquivoExiste ? "a" : "w");
-    if(!arq)
+    if (!arq)
         return;
-    
-    if(!arquivoExiste) {
+
+    if (!arquivoExiste)
+    {
         fprintf(arq, "Tipo da Entrada;Nome do Algoritmo;Tamanho da Entrada;Tempo de Execucao(ms);Tempo CPU(ms); Trocas; Comparacoes\n");
     }
-    
+
     fprintf(arq, "%s;%s;%d;%lf;%lf;%llu;%llu\n", tipoVet, nomeAlgo, inputSize, exec_time, exec_time_cpu, trocas, comparacoes);
     fclose(arq);
 };

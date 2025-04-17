@@ -30,18 +30,14 @@ int particiona(int *vet, int inicio, int fim, ull *trocas, ull *comparacoes)
         {
             i++;
             (*trocas)++;
-            int temp = vet[i];
-            vet[i] = vet[j];
-            vet[j] = temp;
+            swap(&vet[i], &vet[j]);
         }
     }
 
     if (i + 1 != fim)
     {
         (*trocas)++;
-        int temp = vet[i + 1];
-        vet[i + 1] = vet[fim];
-        vet[fim] = temp;
+        swap(&vet[i + 1], &vet[fim]);
     }
 
     return i + 1;

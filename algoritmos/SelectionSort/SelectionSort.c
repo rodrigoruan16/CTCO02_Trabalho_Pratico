@@ -34,9 +34,7 @@ void selectionsort(int* vet, int tam, ull* trocas, ull* comparacoes)
         if (i != menor)
         {
             (*trocas)++;
-            int temp = vet[i];
-            vet[i] = vet[menor];
-            vet[menor] = temp;
+            swap(&vet[i], &vet[menor]);
         }
     }
 }
