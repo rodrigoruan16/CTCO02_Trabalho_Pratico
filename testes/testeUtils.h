@@ -19,3 +19,4 @@ SORT_INFORMATIONS * runTimedSort(ull* (*sorting_algorithm)(int *vet, int tam), i
 double getTime(SORT_INFORMATIONS *s);
 ull getComparacoes(SORT_INFORMATIONS *s);
 ull getTrocas(SORT_INFORMATIONS *s);
+double getTimeCPU(SORT_INFORMATIONS *s);
