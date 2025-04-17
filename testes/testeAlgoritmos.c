@@ -49,8 +49,8 @@ function functions[] = {
 
 void testSort(void f(int*, int, ull*, ull*), char funcName[], int* vet, int tamanho, int porcentagem, int repeticoes, char tipoVet[])
 {
-    double soma = 0;
-    double soma_cpu = 0;
+    double soma = 0, soma_cpu = 0;
+    ull trocas = 0, comparacoes = 0;
     int* copy;
     SORT_INFORMATIONS* s;
 
@@ -67,16 +67,18 @@ void testSort(void f(int*, int, ull*, ull*), char funcName[], int* vet, int tama
         s = runTimedSort(f, copy, tamanho);
         soma += getTime(s);
         soma_cpu += getTimeCPU(s);
+        trocas += getTrocas(s);
+        comparacoes += getComparacoes(s);
         free(copy);
+        free(s);
     }
 
     double time = soma / repeticoes;
     double time_CPU = soma_cpu / repeticoes;
-    escreveArquivo("resultados.csv", funcName, time, time_CPU, tamanho, getComparacoes(s), getTrocas(s), tipoVet);
+    escreveArquivo("resultados.csv", funcName, time, time_CPU, tamanho, comparacoes/repeticoes, trocas/repeticoes, tipoVet);
     printf("%s executou em %f milissegundos.\n", funcName, time);
     printf("%s utilizou a CPU por %f milissegundos.\n", funcName, time_CPU);
-    printf("Trocas: %d - Comparações: %d\n", getTrocas(s), getComparacoes(s));
-    free(s);
+    printf("Trocas: %llu - Comparações: %llu\n", trocas/repeticoes, comparacoes/repeticoes);
 }
 
 int main()

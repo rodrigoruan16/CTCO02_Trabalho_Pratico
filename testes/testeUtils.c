@@ -34,7 +34,7 @@ SORT_INFORMATIONS *runTimedSort(void (*sorting_algorithm)(int *vet, int tam, ull
     struct timeval startTime, end;
     
     clock_t inicio, fim;
-    ull trocas = 0ULL, comparacoes = 0ULL;
+    ull trocas = 0, comparacoes = 0;
 
     gettimeofday(&startTime, 0);
     inicio = clock();

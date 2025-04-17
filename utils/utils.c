@@ -179,7 +179,7 @@ void escreveArquivo(char *nomeArquivo, char *nomeAlgo, double exec_time, double 
         fprintf(arq, "Tipo da Entrada;Nome do Algoritmo;Tamanho da Entrada;Tempo de Execucao(ms);Tempo CPU(ms); Trocas; Comparacoes\n");
     }
     
-    fprintf(arq, "%s;%s;%d;%lf;%lf;%d;%d\n", tipoVet, nomeAlgo, inputSize, exec_time, exec_time_cpu, trocas, comparacoes);
+    fprintf(arq, "%s;%s;%d;%lf;%lf;%llu;%llu\n", tipoVet, nomeAlgo, inputSize, exec_time, exec_time_cpu, trocas, comparacoes);
     fclose(arq);
 };
 
