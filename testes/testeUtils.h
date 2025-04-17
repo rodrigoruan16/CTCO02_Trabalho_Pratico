@@ -15,7 +15,7 @@
 typedef unsigned long long ull;
 typedef struct SORT_INFORMATIONS SORT_INFORMATIONS;
 
-SORT_INFORMATIONS * runTimedSort(ull* (*sorting_algorithm)(int *vet, int tam), int *vet, int tam);
+SORT_INFORMATIONS * runTimedSort(void (*sorting_algorithm)(int *vet, int tam, ull*, ull*), int *vet, int tam);
 double getTime(SORT_INFORMATIONS *s);
 ull getComparacoes(SORT_INFORMATIONS *s);
 ull getTrocas(SORT_INFORMATIONS *s);

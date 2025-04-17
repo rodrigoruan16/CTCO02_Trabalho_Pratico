@@ -15,10 +15,10 @@
 typedef unsigned long long ull;
 
 /* Interface do auxiliar particiona */
-int particiona(int *vet, int inicio, int fim, ull *trocas, ull *comparacoes);
+int particiona(int* vet, int inicio, int fim, ull* trocas, ull* comparacoes);
 
 /* Interface do Quick Sort */
-void quicksort(int *vet, int inicio, int fim, ull *trocas, ull *comparacoes);
+void quicksort(int* vet, int inicio, int fim, ull* trocas, ull* comparacoes);
 
 /* Interface do wrapper do Quick Sort */
-ull *wrapQuickSort(int *vet, int tam);
+void wrapQuickSort(int* vet, int tam, ull* trocas, ull* comparacoes);

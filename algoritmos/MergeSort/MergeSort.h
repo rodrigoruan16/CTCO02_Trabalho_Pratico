@@ -15,10 +15,10 @@
 typedef unsigned long long ull;
 
 /* Interface da auxiliar merge */
-void merge(int *vet, int inicio, int meio, int fim, ull *trocas, ull *comparacoes);
+void merge(int* vet, int inicio, int meio, int fim, ull* trocas, ull* comparacoes);
 
 /*Interface do Merge Sort*/
-void mergesort(int *vet, int inicio, int fim, ull *trocas, ull *comparacoes);
+void mergesort(int* vet, int inicio, int fim, ull* trocas, ull* comparacoes);
 
 /*Interface do wrapper do Merge Sort*/
-ull *wrapMergeSort(int *vet, int tam);
+void wrapMergeSort(int* vet, int tam, ull* trocas, ull* comparacoes);

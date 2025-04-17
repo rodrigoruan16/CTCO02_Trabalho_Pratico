@@ -68,21 +68,7 @@ void quicksort(int *vet, int inicio, int fim, ull *trocas, ull *comparacoes)
 }
 
 /*Wrap do QuickSort*/
-ull *wrapQuickSort(int *vet, int tam)
+void wrapQuickSort(int *vet, int tam, ull *trocas, ull *comparacoes)
 {
-    ull trocas = 0, comparacoes = 0;
-    quicksort(vet, 0, tam - 1, &trocas, &comparacoes);
-
-    ull *vetor = alocaVetorUll(2);
-
-    if (!vetor)
-    {
-        printf("Falha ao alocar vetor no quicksort\n");
-        return NULL;
-    }
-
-    vetor[0] = trocas;
-    vetor[1] = comparacoes;
-
-    return vetor;
+    quicksort(vet, 0, tam - 1, trocas, comparacoes);
 }

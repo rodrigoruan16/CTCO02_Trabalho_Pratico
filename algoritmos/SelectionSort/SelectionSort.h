@@ -15,4 +15,4 @@
 typedef unsigned long long ull;
 
 /*Interface do Selection Sort*/
-ull *selectionsort(int *vet, int tam);
+void selectionsort(int* vet, int tam, ull* trocas, ull* comparacoes);

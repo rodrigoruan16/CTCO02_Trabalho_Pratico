@@ -15,4 +15,4 @@
 typedef unsigned long long ull;
 
 /*Implementação da interface do Insertion Sort */
-ull *insertionsort(int *vet, int tam);
+void insertionsort(int* vet, int tam, ull* trocas, ull* comparacoes);

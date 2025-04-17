@@ -15,4 +15,4 @@
 typedef unsigned long long ull;
 
 /*Interface do ShellSort*/
-ull *shellsort(int *vet, int tam);
+void shellsort(int* vet, int tam, ull* trocas, ull* comparacoes);

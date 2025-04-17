@@ -28,17 +28,17 @@ struct SORT_INFORMATIONS
     
 };
 
-SORT_INFORMATIONS *runTimedSort(ull *(*sorting_algorithm)(int *vet, int tam), int *vet, int tam)
+SORT_INFORMATIONS *runTimedSort(void (*sorting_algorithm)(int *vet, int tam, ull*, ull*), int *vet, int tam)
 {
 
     struct timeval startTime, end;
     
     clock_t inicio, fim;
-    ull *vetor;
+    ull trocas = 0ULL, comparacoes = 0ULL;
 
     gettimeofday(&startTime, 0);
     inicio = clock();
-    vetor = sorting_algorithm(vet, tam);
+    sorting_algorithm(vet, tam, &trocas, &comparacoes);
     fim = clock();
     gettimeofday(&end, 0);
 
@@ -51,11 +51,12 @@ SORT_INFORMATIONS *runTimedSort(ull *(*sorting_algorithm)(int *vet, int tam), in
     SORT_INFORMATIONS *s = (SORT_INFORMATIONS *)malloc(sizeof(SORT_INFORMATIONS));
     s->time = result * 1000.0;
     s->time_cpu = cpu_time;
-    s->trocas = vetor[0];
-    s->comparacoes = vetor[1];
+    s->trocas = trocas;
+    s->comparacoes = comparacoes;
 
     return s;
 }
+
 
 double getTime(SORT_INFORMATIONS *s) {
     return s->time;

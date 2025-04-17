@@ -17,23 +17,21 @@
 #include "../../utils/utils.h"
 #include "ShellSort.h"
 
-/*Implementação do ShellSort*/
-ull *shellsort(int *vet, int tam)
+ /*Implementação do ShellSort*/
+void shellsort(int* vet, int tam, ull* trocas, ull* comparacoes)
 {
-    ull trocas = 0, comparacoes = 0;
-
     for (int gap = tam / 2; gap > 0; gap = gap / 2)
     {
         for (int j = gap; j < tam; j++)
         {
             for (int k = j - gap; k >= 0; k -= gap)
             {
-                comparacoes++;
+                (*comparacoes)++;
                 if (vet[k + gap] >= vet[k])
                     break;
                 else
                 {
-                    trocas++;
+                    (*trocas)++;
                     int temp = vet[k + gap];
                     vet[k + gap] = vet[k];
                     vet[k] = temp;
@@ -41,14 +39,4 @@ ull *shellsort(int *vet, int tam)
             }
         }
     }
-
-    ull *vetor = alocaVetorUll(2);
-    
-    if (!vetor)
-        return NULL;
-
-    vetor[0] = trocas;
-    vetor[1] = comparacoes;
-
-    return vetor;
 };

@@ -17,4 +17,4 @@
 typedef unsigned long long ull;
 typedef struct function function;
 
-void testSort(ull* f(int *, int), char funcName[], int *vet, int tamanho, int porcentagem, int repeticoes, char tipoVet[]);
+void testSort(void f(int *, int, ull*, ull*), char funcName[], int *vet, int tamanho, int porcentagem, int repeticoes, char tipoVet[]);

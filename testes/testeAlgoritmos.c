@@ -34,7 +34,7 @@
 
 typedef struct function
 {
-    ull* (*f)(int *, int);
+    void (*f)(int*, int, ull*, ull*);
     char name[50];
 } function;
 
@@ -47,13 +47,13 @@ function functions[] = {
     {shellsort, "Shell Sort"}
 };
 
-void testSort(ull* f(int *, int), char funcName[], int *vet, int tamanho, int porcentagem, int repeticoes, char tipoVet[])
+void testSort(void f(int*, int, ull*, ull*), char funcName[], int* vet, int tamanho, int porcentagem, int repeticoes, char tipoVet[])
 {
     double soma = 0;
     double soma_cpu = 0;
-    int *copy;
-    SORT_INFORMATIONS *s;
-    
+    int* copy;
+    SORT_INFORMATIONS* s;
+
     for (int i = 0; i < repeticoes; i++)
     {
         copy = copiaVetor(vet, tamanho);
@@ -71,17 +71,17 @@ void testSort(ull* f(int *, int), char funcName[], int *vet, int tamanho, int po
     }
 
     double time = soma / repeticoes;
-    double time_CPU = soma_cpu/repeticoes;
+    double time_CPU = soma_cpu / repeticoes;
     escreveArquivo("resultados.csv", funcName, time, time_CPU, tamanho, getComparacoes(s), getTrocas(s), tipoVet);
     printf("%s executou em %f milissegundos.\n", funcName, time);
-    printf("%s utilizou a CPU por %f milissegundos.\n", funcName, time_put);
+    printf("%s utilizou a CPU por %f milissegundos.\n", funcName, time_CPU);
     printf("Trocas: %d - Comparações: %d\n", getTrocas(s), getComparacoes(s));
     free(s);
 }
 
 int main()
 {
-    int tipo, tamanho, porcentagem = 0, *vet, repeticoes = 1;
+    int tipo, tamanho, porcentagem = 0, * vet, repeticoes = 1;
     char str_tipo[10];
     printf("1 - Gerar vetor aleatorio\n");
     printf("2 - Gerar vetor em ordem crescente\n");
@@ -110,7 +110,7 @@ int main()
         return 0;
     }
 
-    if(sprintf(str_tipo, "%d_%d", tipo, porcentagem) == 0) {
+    if (sprintf(str_tipo, "%d_%d", tipo, porcentagem) == 0) {
         strcpy(str_tipo, " ");
     }
 

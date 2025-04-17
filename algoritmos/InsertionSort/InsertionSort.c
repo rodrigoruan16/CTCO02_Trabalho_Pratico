@@ -18,39 +18,24 @@
 #include "../../utils/utils.h"
 #include "InsertionSort.h"
 
-/*Implementação do InsertionSort*/
-ull *insertionsort(int *vet, int tam)
+ /*Implementação do InsertionSort*/
+void insertionsort(int* vet, int tam, ull* trocas, ull* comparacoes)
 {
-    ull trocas = 0, comparacoes = 0;
-
-    if (!vet || tam == 0)
-        return NULL;
-
     for (int i = 1; i < tam; i++)
     {
         int marcador = i - 1;
         int elemento = vet[i];
 
-        comparacoes++; // Comparacao entre vet[marcador] e elemento
+        (*comparacoes)++; // Comparacao entre vet[marcador] e elemento
         while (marcador >= 0 && vet[marcador] > elemento)
         {
             vet[marcador + 1] = vet[marcador];
             marcador--;
 
             if (marcador >= 0)
-                comparacoes++;
+                (*comparacoes)++;
         }
 
         vet[marcador + 1] = elemento;
     }
-
-    ull *vetor = alocaVetorUll(2);
-
-    if (!vetor)
-        return NULL;
-
-    vetor[0] = trocas;
-    vetor[1] = comparacoes;
-
-    return vetor;
 }

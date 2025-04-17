@@ -17,10 +17,10 @@
 #include "../../utils/utils.h"
 #include "MergeSort.h"
 
-/* Implementação do merge (auxiliar para mergesort) */
-void merge(int *vet, int inicio, int meio, int fim, ull *trocas, ull *comparacoes)
+ /* Implementação do merge (auxiliar para mergesort) */
+void merge(int* vet, int inicio, int meio, int fim, ull* trocas, ull* comparacoes)
 {
-    int *temp = alocaVetor(fim - inicio + 1);
+    int* temp = alocaVetor(fim - inicio + 1);
 
     int i = inicio, j = meio + 1, idx = 0;
     if (!temp)
@@ -62,7 +62,7 @@ void merge(int *vet, int inicio, int meio, int fim, ull *trocas, ull *comparacoe
 }
 
 /*Implementação do MergeSort*/
-void mergesort(int *vet, int inicio, int fim, ull *trocas, ull *comparacoes)
+void mergesort(int* vet, int inicio, int fim, ull* trocas, ull* comparacoes)
 {
     if (inicio >= fim)
         return;
@@ -75,18 +75,7 @@ void mergesort(int *vet, int inicio, int fim, ull *trocas, ull *comparacoes)
 }
 
 /*Wrap do MergeSort*/
-ull *wrapMergeSort(int *vet, int tam)
+void wrapMergeSort(int* vet, int tam, ull* trocas, ull* comparacoes)
 {
-    ull trocas = 0, comparacoes = 0;
-    mergesort(vet, 0, tam - 1, &trocas, &comparacoes);
-
-    ull *vetor = alocaVetorUll(2);
-
-    if (!vetor)
-        return NULL;
-
-    vetor[0] = trocas;
-    vetor[1] = comparacoes;
-
-    return vetor;
+    mergesort(vet, 0, tam - 1, trocas, comparacoes);
 }
