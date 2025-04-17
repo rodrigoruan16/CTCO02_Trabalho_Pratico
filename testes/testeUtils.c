@@ -62,6 +62,10 @@ double getTime(SORT_INFORMATIONS *s) {
     return s->time;
 }
 
+double getTimeCPU(SORT_INFORMATIONS *s) {
+    return s->time_cpu;
+}
+
 ull getComparacoes(SORT_INFORMATIONS *s) {
     return s->comparacoes;
 }
