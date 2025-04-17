@@ -15,12 +15,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/time.h>
+#include <time.h>
 #include <assert.h>
 #include "testeUtils.h"
 
 struct SORT_INFORMATIONS
 {
     double time;
+    double time_cpu;
     int trocas, comparacoes;
 };
 
@@ -28,19 +30,24 @@ SORT_INFORMATIONS *runTimedSort(int *(*sorting_algorithm)(int *vet, int tam), in
 {
 
     struct timeval startTime, end;
+    clock_t inicio, fim;
     int *vetor;
 
     gettimeofday(&startTime, 0);
+    inicio = clock();
     vetor = sorting_algorithm(vet, tam);
+    fim = clock();
     gettimeofday(&end, 0);
 
     // a função retorna o valor em duas partes, uma em segundos e outra em microsegundos
     long seconds = end.tv_sec - startTime.tv_sec;
     long microseconds = end.tv_usec - startTime.tv_usec;
     double result = seconds + microseconds * 1e-6;
+    double cpu_time = (double)(fim - inicio)*1000/CLOCKS_PER_SEC;
 
     SORT_INFORMATIONS *s = (SORT_INFORMATIONS *)malloc(sizeof(SORT_INFORMATIONS));
     s->time = result * 1000.0;
+    s->time_cpu = cpu_time;
     s->trocas = vetor[0];
     s->comparacoes = vetor[1];
 
