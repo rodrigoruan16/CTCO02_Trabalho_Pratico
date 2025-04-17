@@ -21,41 +21,41 @@
 /* Implementação do particiona (auxiliar para quicksort) */
 int particiona(int *vet, int inicio, int fim, int *trocas, int *comparacoes)
 {
-    int pivo = vet[inicio], i = inicio, j = fim, temp;
+    int pivo = vet[inicio], i = inicio - 1;
 
-    while (i <= j) {
-        while (vet[i] < pivo)
+    for (int j = inicio; j < fim; j++) {
+        (*comparacoes)++;
+        if (vet[j] <= pivo) {
             i++;
-
-        while (vet[j] > pivo)
-            j--;
-
-        if (i <= j) {
+            (*trocas)++;
             int temp = vet[i];
             vet[i] = vet[j];
             vet[j] = temp;
-            i++;
-            j--;
         }
     }
 
-    return i;
+    (*trocas)++;
+    int temp = vet[i + 1];
+    vet[i + 1] = vet[fim];
+    vet[fim] = temp;
+
+    return i + 1;
 }
 
 /*Implementação do QuickSort*/
 void quicksort(int *vet, int inicio, int fim, int *trocas, int *comparacoes)
 {
-    if (inicio < fim)
+    while (inicio < fim)
     {
         int posPivot = particiona(vet, inicio, fim, trocas, comparacoes);
         // Otimização com Tail Recursion
-        if(inicio < posPivot - 1) {
+        if(posPivot - inicio < fim - posPivot) {
             quicksort(vet, inicio, posPivot - 1, trocas, comparacoes);
-        }
-        
-        if (posPivot < fim) {
-            quicksort(vet, posPivot, fim, trocas, comparacoes);
-        }        
+            inicio = posPivot + 1;
+        } else {
+            quicksort(vet, posPivot + 1, fim, trocas, comparacoes);
+            fim = posPivot - 1;
+        }    
     }
 }
 
