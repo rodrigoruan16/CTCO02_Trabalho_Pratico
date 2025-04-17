@@ -30,7 +30,6 @@ struct SORT_INFORMATIONS
 
 SORT_INFORMATIONS *runTimedSort(void (*sorting_algorithm)(int *vet, int tam, ull*, ull*), int *vet, int tam)
 {
-
     struct timeval startTime, end;
     
     clock_t inicio, fim;

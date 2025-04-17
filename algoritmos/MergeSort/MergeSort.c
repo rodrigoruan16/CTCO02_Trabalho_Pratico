@@ -59,6 +59,8 @@ void merge(int* vet, int inicio, int meio, int fim, ull* trocas, ull* comparacoe
 
     for (int k = inicio, y = 0; k <= fim; k++, y++)
         vet[k] = temp[y];
+    
+    free(temp);
 }
 
 /*Implementação do MergeSort*/

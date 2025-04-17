@@ -34,7 +34,7 @@
 
 typedef struct function
 {
-    void (*f)(int*, int, ull*, ull*);
+    void (*f)(int *, int, ull *, ull *);
     char name[50];
 } function;
 
@@ -44,15 +44,14 @@ function functions[] = {
     {selectionsort, "Selection Sort"},
     {wrapMergeSort, "Merge Sort"},
     {wrapQuickSort, "Quick Sort"},
-    {shellsort, "Shell Sort"}
-};
+    {shellsort, "Shell Sort"}};
 
-void testSort(void f(int*, int, ull*, ull*), char funcName[], int* vet, int tamanho, int porcentagem, int repeticoes, char tipoVet[])
+void testSort(void f(int *, int, ull *, ull *), char funcName[], int *vet, int tamanho, int porcentagem, int repeticoes, char tipoVet[])
 {
     double soma = 0, soma_cpu = 0;
     ull trocas = 0, comparacoes = 0;
-    int* copy;
-    SORT_INFORMATIONS* s;
+    int *copy;
+    SORT_INFORMATIONS *s;
 
     for (int i = 0; i < repeticoes; i++)
     {
@@ -75,15 +74,15 @@ void testSort(void f(int*, int, ull*, ull*), char funcName[], int* vet, int tama
 
     double time = soma / repeticoes;
     double time_CPU = soma_cpu / repeticoes;
-    escreveArquivo("resultados.csv", funcName, time, time_CPU, tamanho, comparacoes/repeticoes, trocas/repeticoes, tipoVet);
+    escreveArquivo("resultados.csv", funcName, time, time_CPU, tamanho, comparacoes / repeticoes, trocas / repeticoes, tipoVet);
     printf("%s executou em %f milissegundos.\n", funcName, time);
     printf("%s utilizou a CPU por %f milissegundos.\n", funcName, time_CPU);
-    printf("Trocas: %llu - Comparações: %llu\n", trocas/repeticoes, comparacoes/repeticoes);
+    printf("Trocas: %llu - Comparações: %llu\n", trocas / repeticoes, comparacoes / repeticoes);
 }
 
 int main()
 {
-    int tipo, tamanho, porcentagem = 0, * vet, repeticoes = 1;
+    int tipo, tamanho, porcentagem = 0, *vet, repeticoes = 1;
     char str_tipo[10];
     printf("1 - Gerar vetor aleatorio\n");
     printf("2 - Gerar vetor em ordem crescente\n");
@@ -112,7 +111,8 @@ int main()
         return 0;
     }
 
-    if (sprintf(str_tipo, "%d_%d", tipo, porcentagem) == 0) {
+    if (sprintf(str_tipo, "%d_%d", tipo, porcentagem) == 0)
+    {
         strcpy(str_tipo, " ");
     }
 
