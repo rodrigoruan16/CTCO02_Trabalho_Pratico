@@ -54,18 +54,27 @@ void quicksort(int *vet, int inicio, int fim, int *trocas, int *comparacoes)
     if (inicio < fim)
     {
         int posPivot = particiona(vet, inicio, fim, trocas, comparacoes);
-        quicksort(vet, inicio, posPivot - 1, trocas, comparacoes);
-        quicksort(vet, posPivot + 1, fim, trocas, comparacoes);
+        // Otimização com Tail Recursion
+        if(posPivot - inicio < fim - posPivot) {
+            quicksort(vet, inicio, posPivot - 1, trocas, comparacoes);
+            inicio = posPivot + 1;
+        } else {
+            quicksort(vet, posPivot + 1, fim, trocas, comparacoes);
+            fim = posPivot - 1;
+        }        
     }
 }
 
 /*Wrap do QuickSort*/
 int *wrapQuickSort(int *vet, int tam)
 {
-    int trocas, comparacoes;
-    trocas = comparacoes = 0;
+    int trocas = 0, comparacoes = 0;
     quicksort(vet, 0, tam - 1, &trocas, &comparacoes);
     int *vetor = alocaVetor(2);
+    if(!vetor) {
+        printf("Falha ao alocar vetor no quicksort\n");
+        return;
+    }
     vetor[0] = trocas;
     vetor[1] = comparacoes;
     return vetor;
