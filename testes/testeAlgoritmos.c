@@ -20,6 +20,7 @@
 #include <time.h>
 #include <assert.h>
 #include <unistd.h>
+#include <string.h>
 
 #include "../algoritmos/InsertionSort/InsertionSort.h"
 #include "../algoritmos/MergeSort/MergeSort.h"
@@ -43,7 +44,8 @@ function functions[] = {
     {selectionsort, "Selection Sort"},
     {wrapMergeSort, "Merge Sort"},
     {wrapQuickSort, "Quick Sort"},
-    {shellsort, "Shell Sort"}};
+    {shellsort, "Shell Sort"}
+};
 
 void testSort(int* f(int *, int), char funcName[], int *vet, int tamanho, int porcentagem, int repeticoes, char tipoVet[])
 {
