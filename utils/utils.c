@@ -137,7 +137,7 @@ int *geraAleatorios(int tam, int semente)
         return NULL;
 
     for (int i = 0; i < tam; i++)
-        vetor[i] = rand();
+        vetor[i] = rand() - (RAND_MAX / 2 + 1);
 
     return vetor;
 }
