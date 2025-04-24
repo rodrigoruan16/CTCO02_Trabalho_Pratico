@@ -17,20 +17,27 @@
 #include "../../utils/utils.h"
 #include "SelectionSort.h"
 
- /*Implementação do Selection Sort*/
+/**
+ * Implementação do algoritmo Selection Sort
+ * Ordena um vetor de inteiros em ordem crescente utilizando o método de seleção
+ */
 void selectionsort(int* vet, int tam, ull* trocas, ull* comparacoes)
-{
+{   
+    /* Loop principal - percorre todo o vetor */
     for (int i = 0; i < tam - 1; i++)
     {
         int menor = i;
 
         for (int j = i + 1; j < tam; j++)
         {
+
+            /* Se encontrar um elemento menor, atualiza o índice */
             (*comparacoes)++;
             if (vet[j] < vet[menor])
                 menor = j;
         }
 
+        /* Realiza a troca apenas se necessário */
         if (i != menor)
         {
             (*trocas)++;

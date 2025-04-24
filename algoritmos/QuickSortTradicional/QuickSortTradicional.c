@@ -18,7 +18,11 @@
 #include "../../utils/utils.h"
 #include "QuickSortTradicional.h"
 
-/* Implementação do particiona (auxiliar para quicksort) */
+/**
+ * Função de particionamento para o algoritmo QuickSort (versão tradicional)
+ * Esta função seleciona o primeiro elemento como pivô e rearranja o vetor
+ * de forma que elementos menores que o pivô fiquem à esquerda e maiores à direita
+*/
 int particionatrad(int *vet, int inicio, int fim, ull *trocas, ull *comparacoes)
 {
     int pivo = vet[inicio], i = inicio;
@@ -33,13 +37,12 @@ int particionatrad(int *vet, int inicio, int fim, ull *trocas, ull *comparacoes)
                 (*trocas)++;
                 swap(&vet[i], &vet[j]);
             }
-                
         }
     }
 
     (*trocas)++;
-    swap(&vet[i + 1], &vet[fim]);
-    return i + 1;
+    swap(&vet[inicio], &vet[i]);  // Troca o pivô para sua posição final
+    return i;  // Retorna a posição do pivô
 }
 
 /*Implementação do QuickSort Tradicional*/

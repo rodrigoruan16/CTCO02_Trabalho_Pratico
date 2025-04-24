@@ -18,7 +18,11 @@
 #include "../../utils/utils.h"
 #include "QuickSort.h"
 
-/* Implementação do particiona (auxiliar para quicksort) */
+/**
+* Função de particionamento para o algoritmo QuickSort
+* Esta função seleciona o último elemento como pivô e rearranja o vetor
+* de forma que elementos menores que o pivô fiquem à esquerda e maiores à direita
+*/
 int particiona(int *vet, int inicio, int fim, ull *trocas, ull *comparacoes)
 {
     int pivo = vet[fim], i = inicio - 1;
@@ -34,6 +38,8 @@ int particiona(int *vet, int inicio, int fim, ull *trocas, ull *comparacoes)
         }
     }
 
+    /* Coloca o pivô em sua posição final, entre os elementos menores e maiores */
+   /* Evita contar uma troca quando o pivô já está na posição correta */
     if (i + 1 != fim)
     {
         (*trocas)++;

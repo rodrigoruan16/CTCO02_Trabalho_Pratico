@@ -30,10 +30,15 @@ void shellsort(int *vet, int tam, ull *trocas, ull *comparacoes)
             j = i - gap;
             while (j >= 0 && vet[j] > temp)
             {
+                (*comparacoes)++;
                 vet[j + gap] = vet[j];
+                (*trocas)++; 
                 j = j - gap;
             }
+
+            (*comparacoes)++;
             vet[j + gap] = temp;
+            (*trocas)++; 
         }
     }
 };

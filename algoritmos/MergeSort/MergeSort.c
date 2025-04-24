@@ -17,7 +17,10 @@
 #include "../../utils/utils.h"
 #include "MergeSort.h"
 
- /* Implementação do merge (auxiliar para mergesort) */
+/**
+* Função de merge para o algoritmo MergeSort
+* Combina duas sub-listas ordenadas em uma única lista ordenada
+*/
 void merge(int* vet, int inicio, int meio, int fim, ull* trocas, ull* comparacoes)
 {
     int* temp = alocaVetor(fim - inicio + 1);
@@ -29,6 +32,7 @@ void merge(int* vet, int inicio, int meio, int fim, ull* trocas, ull* comparacoe
     while (i <= meio && j <= fim)
     {
         (*comparacoes)++;
+        /* Seleciona o menor elemento entre as duas sub-listas */
         if (vet[i] <= vet[j])
         {
             temp[idx] = vet[i];
@@ -43,6 +47,7 @@ void merge(int* vet, int inicio, int meio, int fim, ull* trocas, ull* comparacoe
         idx++;
     }
 
+    /* Copia os elementos restantes da primeira sub-lista, se houver */
     while (i <= meio)
     {
         temp[idx] = vet[i];
@@ -50,6 +55,7 @@ void merge(int* vet, int inicio, int meio, int fim, ull* trocas, ull* comparacoe
         i++;
     }
 
+    /* Copia os elementos restantes da segunda sub-lista, se houver */
     while (j <= fim)
     {
         temp[idx] = vet[j];
@@ -57,6 +63,7 @@ void merge(int* vet, int inicio, int meio, int fim, ull* trocas, ull* comparacoe
         j++;
     }
 
+    /* Copia os elementos para o vetor original */
     for (int k = inicio, y = 0; k <= fim; k++, y++)
         vet[k] = temp[y];
     
