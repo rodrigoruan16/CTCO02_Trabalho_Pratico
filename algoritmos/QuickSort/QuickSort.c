@@ -26,7 +26,7 @@ int particiona(int *vet, int inicio, int fim, ull *trocas, ull *comparacoes)
     for (int j = inicio; j < fim; j++)
     {
         (*comparacoes)++;
-        if (vet[j] <= pivo)
+        if (vet[j] < pivo)
         {
             i++;
             (*trocas)++;

@@ -25,6 +25,7 @@
 #include "../algoritmos/InsertionSort/InsertionSort.h"
 #include "../algoritmos/MergeSort/MergeSort.h"
 #include "../algoritmos/QuickSort/QuickSort.h"
+#include "../algoritmos/QuickSortTradicional/QuickSortTradicional.h"
 #include "../algoritmos/SelectionSort/SelectionSort.h"
 #include "../algoritmos/ShellSort/ShellSort.h"
 
@@ -38,13 +39,15 @@ typedef struct function
     char name[50];
 } function;
 
-const int NUMBER_OF_SORT_FUNCTIONS = 5;
+const int NUMBER_OF_SORT_FUNCTIONS = 6;
 function functions[] = {
     {insertionsort, "Insertion Sort"},
     {selectionsort, "Selection Sort"},
     {wrapMergeSort, "Merge Sort"},
     {wrapQuickSort, "Quick Sort"},
-    {shellsort, "Shell Sort"}};
+    {shellsort, "Shell Sort"},
+    {wrapQuickSorttrad, "QuickSort Tradicional"}    
+};
 
 void testSort(void f(int *, int, ull *, ull *), char funcName[], int *vet, int tamanho, int porcentagem, int repeticoes, char tipoVet[])
 {

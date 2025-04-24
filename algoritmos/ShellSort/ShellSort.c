@@ -20,21 +20,20 @@
 /*Implementação do ShellSort*/
 void shellsort(int *vet, int tam, ull *trocas, ull *comparacoes)
 {
-    for (int gap = tam / 2; gap > 0; gap = gap / 2)
+    int gap, i, j, temp;
+
+    for (gap = tam / 2; gap >= 1; gap /= 2)
     {
-        for (int j = gap; j < tam; j++)
+        for (i = gap; i < tam; i++)
         {
-            for (int k = j - gap; k >= 0; k -= gap)
+            temp = vet[i];
+            j = i - gap;
+            while (j >= 0 && vet[j] > temp)
             {
-                (*comparacoes)++;
-                if (vet[k + gap] >= vet[k])
-                    break;
-                else
-                {
-                    (*trocas)++;
-                    swap(&vet[k + gap], &vet[k]);
-                }
+                vet[j + gap] = vet[j];
+                j = j - gap;
             }
+            vet[j + gap] = temp;
         }
     }
 };
